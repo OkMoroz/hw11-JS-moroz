@@ -1,13 +1,26 @@
 const text = document.getElementById("inputText");
-const myDiv = document.createElement("div");
-myDiv.id = "myDiv";
+const secondText = document.getElementById("inputSecondText");
+const firstDiv = document.createElement("div");
+const secondDiv = document.createElement("div");
+firstDiv.id = "firstDiv";
+secondDiv.id = "secondDiv";
 
-text.addEventListener("mouseover", function () {
-  text.insertAdjacentElement("afterend", myDiv);
-  text.placeholder = "забери курсор і зникне червоний блок";
+text.addEventListener("focus", function () {
+  text.insertAdjacentElement("afterend", firstDiv);
+  text.placeholder = "клікни за межами текстового поля і зникне червоний блок";
 });
 
-text.addEventListener("mouseout", function () {
+text.addEventListener("blur", function () {
   text.placeholder = "";
-  myDiv.remove();
+  firstDiv.remove();
+});
+
+secondText.addEventListener("mouseover", function () {
+  secondText.insertAdjacentElement("afterend", secondDiv);
+  secondText.placeholder = "забери курсор і зникне червоний блок";
+});
+
+secondText.addEventListener("mouseout", function () {
+  secondText.placeholder = "";
+  secondDiv.remove();
 });
